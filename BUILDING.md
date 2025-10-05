@@ -130,6 +130,23 @@ APKs are located at:
 
 ## 🔧 Troubleshooting
 
+### "no main manifest attribute, in gradle/wrapper/gradle-wrapper.jar"
+**Cause:** The Gradle wrapper JAR is corrupted (common when committing binary files)
+
+**Solution:** Run the fix script:
+```bash
+fix_gradle_wrapper.bat
+```
+
+Or manually:
+```bash
+# Delete corrupted JAR
+Remove-Item gradle\wrapper\gradle-wrapper.jar
+
+# Download fresh copy
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/gradle/gradle/v7.6.0/gradle/wrapper/gradle-wrapper.jar" -OutFile "gradle\wrapper\gradle-wrapper.jar"
+```
+
 ### "SDK location not found"
 **Solution:** Create `local.properties` file with correct SDK path (see above)
 
